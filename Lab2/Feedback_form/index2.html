@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Form</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(-135deg, #f6d365, #fda085);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: -20px 30px 30px rgba(255, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        h2 {
+            color: #444;
+            margin-bottom: 15px;
+        }
+
+        @keyframes soft-blink {
+            0% { opacity: 1; }
+            50% { opacity: 0.6; } /* Instead of disappearing, it fades slightly */
+            100% { opacity: 1; }
+        }
+
+        .label {
+            display: block;
+            text-align: left;
+            margin-top: 10px;
+            color: #333;
+            animation: soft-blink 1.5s infinite ease-in-out; /* Smooth transition */
+        }
+
+
+
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 2px solid #e4e1e1;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            border-color: #ff7e5f;
+            outline: none;
+            box-shadow: 0 0 8px brown;
+        }
+
+        .optional {
+            font-weight: normal;
+            font-size: 0.85em;
+            color: gray;
+        }
+
+        .rating {
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+        }
+
+        .rating input {
+            display: none;
+        }
+
+        .rating label {
+            font-size: 24px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .rating input:checked ~ label {
+            color: #000000;
+            transform: scale(1.8);
+        }
+
+        button {
+            width: 100%;
+            background: linear-gradient(135deg, #ff7e5f, #feb47b);
+            color: white;
+            border: none;
+            padding: 12px;
+            margin-top: 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: linear-gradient(135deg, #feb47b, #ff7e5f);
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>💬 We Value Your Feedback!</h2>
+        <form>
+            <label for="name" class="label">Name <span class="optional">(Optional)</span></label>
+            <input type="text" id="name" name="name" placeholder="Enter your name">
+
+            <label for="email" class="label">Email <span class="optional">(Optional)</span></label>
+            <input type="email" id="email" name="email" placeholder="Enter your email">
+
+            <label for="phone" class="label">Phone <span class="optional">(Optional)</span></label>
+            <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
+
+            <label class="label">Rating</label>
+            <div class="rating">
+                <input type="radio" id="star5" name="rating" value="5"><label for="star5">⭐</label>
+                <input type="radio" id="star4" name="rating" value="4"><label for="star4">⭐</label>
+                <input type="radio" id="star3" name="rating" value="3"><label for="star3">⭐</label>
+                <input type="radio" id="star2" name="rating" value="2"><label for="star2">⭐</label>
+                <input type="radio" id="star1" name="rating" value="1"><label for="star1">⭐</label>
+            </div>
+
+            <label for="questions" class="label">Any Questions Regarding Product or Service?</label>
+            <textarea id="questions" name="questions" rows="3" required placeholder="Type your questions here..."></textarea>
+
+            <label for="comments" class="label">Additional Comments <span class="optional">(Optional)</span></label>
+            <textarea id="comments" name="comments" rows="3" placeholder="Any additional feedback?"></textarea>
+
+            <button type="submit">Submit Feedback</button>
+        </form>
+    </div>
+
+</body>
+
+</html>

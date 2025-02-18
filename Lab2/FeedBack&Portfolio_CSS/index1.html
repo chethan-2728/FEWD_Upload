@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="style1.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#feedback">Feedback</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="profile">
+                <img src="example.jpg" alt="Profile Picture">
+                <h1>Chetan Kolakanti</h1>
+                <p>Web Developer | Designer</p>
+            </div>
+            <hr>
+            <div class="contacts">
+                <h2>Contact</h2>
+                <p>Email: chetankolakanti@gmail.com</p>
+                <p>Phone: 19567983679</p>
+                <p>LinkedIn: linkedin.com/in/chetank</p>
+            </div>
+            <hr>
+            <div class="social">
+                <h2>Social Media</h2>
+                <p>GitHub: github.com/chetan_27</p>
+                <p>Twitter: @chetank</p>
+            </div>
+        </aside>
+        <main class="content">
+            <fieldset>
+                <legend>About</legend>
+                <section id="about">
+                    <p>Passionate web developer with experience in building modern, responsive websites.</p>
+                </section>
+            </fieldset>
+            <fieldset>
+                <legend>Skills</legend>
+                <section id="skills">
+                    <ul>
+                        <li>HTML, CSS, JavaScript</li>
+                        <li>React, Node.js</li>
+                        <li>Python, Java</li>
+                    </ul>
+                </section>
+            </fieldset>
+            <fieldset>
+                <legend>Projects</legend>
+                <section id="projects">
+                    <details>
+                        <summary>Project 1</summary>
+                        <section>
+                            <br>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facere excepturi magni iusto est<br>
+                            repellendus beatae consequatur ipsum, quam iste esse ipsam id tempore neque sit vero dolor unde<br>
+                            enim natus distinctio sed. Sed amet delectus, blanditiis harum debitis vel? Unde explicabo,<br>
+                            voluptate dignissimos laboriosam quae quo amet fugit ex fugiat!<br>
+                            <a href="http://github.com">Link to the Repo</a>
+                        </section><br>
+                    </details>
+                    <details>
+                        <summary>Project 2</summary>
+                        <p>Portfolio website built with React.</p><br>
+                        <a href="http://github.com">Link to the Repo</a>
+                    </details>
+                </section>
+            </fieldset>
+            <fieldset>
+                <legend>Education</legend>
+                <section id="education">
+                    <table>
+                        <tr>
+                            <th>Degree</th>
+                            <th>Institute</th>
+                            <th>Year</th>
+                        </tr>
+                        <tr>
+                            <td>B.Tech Computer Science</td>
+                            <td>KMIT</td>
+                            <td>2026</td>
+                        </tr>
+                        <tr>
+                            <td>Intermediate MPC</td>
+                            <td>NVJC</td>
+                            <td>2022</td>
+                        </tr>
+                        <tr>
+                            <td>High School</td>
+                            <td>JNVP</td>
+                            <td>2020</td>
+                        </tr>
+                    </table>
+                </section>
+            </fieldset>
+            <fieldset>
+                <legend>Feedback</legend>
+                <section id="feedback">
+                    <form>
+                        <label for="username">Username:</label><br>
+                        <input type="text" id="username" name="username" placeholder="Your name..." required><br><br>
+                        <label for="feedbackText">Enter Your Feedback:</label><br>
+                        <textarea id="feedbackText" name="feedbackText" placeholder="Your feedback here..." required></textarea><br><br>
+                        <button type="submit">Submit</button>
+                    </form>
+                </section>
+            </fieldset>
+        </main>
+    </div>
+</body>
+
+</html>
