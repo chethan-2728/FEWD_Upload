@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel = "stylesheet" href = "css/main.css">
+</head>
+<body>
+    <section id="collection" class="py-5">
+        <div class="container">
+            <div class="title text-center">
+                <h2 class="position-relative d-inline-block">New Collection</h2>
+            </div>
+
+            <div class="row g-0">
+                <div class="d-flex flex-wrap justify-content-center mt-5 filter-button-group">
+                    <button type="button" class="btn m-2 text-dark active-filter-btn" data-filter="*">All</button>
+                    <button type="button" class="btn m-2 text-dark" data-filter=".best">Best Sellers</button>
+                    <button type="button" class="btn m-2 text-dark" data-filter=".feat">Featured</button>
+                    <button type="button" class="btn m-2 text-dark" data-filter=".new">New Arrival</button>
+                </div>
+            </div>
+
+            <!-- Product Grid -->
+            <div id="product-list" class="row row-cols-1 row-cols-md-3 g-4">
+                <!-- Products will be inserted dynamically -->
+            </div>
+
+            <!-- Pagination -->
+            <nav>
+                <ul class="pagination justify-content-center mt-4">
+                    <li class="page-item disabled" id="prev-page"><a class="page-link" href="#">Previous</a></li>
+                    <li class="page-item active"><a class="page-link" href="#" data-page="1">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#" data-page="2">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#" data-page="3">3</a></li>
+                    <li class="page-item" id="next-page"><a class="page-link" href="#">Next</a></li>
+                </ul>
+            </nav>
+        </div>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src = "js/script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const productsPerPage = 9;
+            const productContainer = document.getElementById("product-list");
+            const paginationLinks = document.querySelectorAll(".page-link[data-page]");
+            const prevPage = document.getElementById("prev-page");
+            const nextPage = document.getElementById("next-page");
+
+            const products = [
+                { img: "images/c_formal_gray_shirt.png", name: "Gray Shirt", price: "$45.50", category: "best" },
+                { img: "images/c_pant_girl.png", name: "Pant Girl", price: "$50.00", category: "feat" },
+                { img: "images/c_polo-shirt.png", name: "Polo Shirt", price: "$30.00", category: "new" },
+                { img: "images/c_shirt-girl.png", name: "Shirt Girl", price: "$40.00", category: "best" },
+                { img: "images/c_t-shirt_men.png", name: "T-Shirt Men", price: "$25.00", category: "feat" },
+                { img: "images/c_tunic-shirt_girl.png", name: "Tunic Shirt Girl", price: "$35.00", category: "new" },
+                { img: "images/c_undershirt.png", name: "Undershirt", price: "$20.00", category: "best" },
+                { img: "images/c_western-shirt.png", name: "Western Shirt", price: "$55.00", category: "feat" },
+                { img: "images/c_polo-shirt.png", name: "Another Polo", price: "$30.00", category: "new" },
+                { img: "images/c_formal_gray_shirt.png", name: "Another Gray Shirt", price: "$45.50", category: "best" },
+                { img: "images/c_pant_girl.png", name: "Another Pant Girl", price: "$50.00", category: "feat" },
+                { img: "images/c_tunic-shirt_girl.png", name: "Another Tunic", price: "$35.00", category: "new" }
+            ];
+
+            let currentPage = 1;
+            let totalPages = Math.ceil(products.length / productsPerPage);
+
+            function renderProducts(page) {
+                productContainer.innerHTML = "";
+                let start = (page - 1) * productsPerPage;
+                let end = start + productsPerPage;
+                let paginatedProducts = products.slice(start, end);
+
+                paginatedProducts.forEach(product => {
+                    let productHTML = `
+                        <div class="col">
+                            <div class="card shadow-lg border-0">
+                                <img src="${product.img}" class="card-img-top" alt="${product.name}">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title">${product.name}</h5>
+                                    <p class="fw-bold">${product.price}</p>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    productContainer.innerHTML += productHTML;
+                });
+
+                paginationLinks.forEach(link => {
+                    link.parentElement.classList.remove("active");
+                    if (parseInt(link.dataset.page) === page) {
+                        link.parentElement.classList.add("active");
+                    }
+                });
+
+                prevPage.classList.toggle("disabled", page === 1);
+                nextPage.classList.toggle("disabled", page === totalPages);
+            }
+
+            paginationLinks.forEach(link => {
+                link.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    currentPage = parseInt(this.dataset.page);
+                    renderProducts(currentPage);
+                });
+            });
+
+            prevPage.addEventListener("click", function (e) {
+                e.preventDefault();
+                if (currentPage > 1) {
+                    currentPage--;
+                    renderProducts(currentPage);
+                }
+            });
+
+            nextPage.addEventListener("click", function (e) {
+                e.preventDefault();
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    renderProducts(currentPage);
+                }
+            });
+
+            renderProducts(currentPage);
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

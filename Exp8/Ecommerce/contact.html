@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Form</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(-135deg, #f6d365, #fda085);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: -20px 30px 30px rgba(255, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        h2 {
+            color: #444;
+            margin-bottom: 15px;
+        }
+
+        @keyframes soft-blink {
+            0% { opacity: 1; }
+            50% { opacity: 0.6; } 
+            100% { opacity: 1; }
+        }
+
+        .label {
+            display: block;
+            text-align: left;
+            margin-top: 10px;
+            color: #333;
+            animation: soft-blink 1.5s infinite ease-in-out;
+        }
+
+
+
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 2px solid #e4e1e1;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            border-color: #ff7e5f;
+            outline: none;
+            box-shadow: 0 0 8px brown;
+        }
+
+        .optional {
+            font-weight: normal;
+            font-size: 0.85em;
+            color: gray;
+        }
+
+        .rating {
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+        }
+
+        .rating input {
+            display: none;
+        }
+
+        .rating label {
+            font-size: 24px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button {
+            width: 100%;
+            background: linear-gradient(135deg, #ff7e5f, #feb47b);
+            color: white;
+            border: none;
+            padding: 12px;
+            margin-top: 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: linear-gradient(135deg, #feb47b, #ff7e5f);
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>💬 Get in touch with us !!!</h2>
+        <form>
+            <label for="name" class="label">Name <span class="optional"></span></label>
+            <input type="text" id="name" name="name" required placeholder="Enter your name">
+
+            <label for="email" class="label">Email <span class="optional"></span></label>
+            <input type="email" id="email" name="email" required placeholder="Enter your email">
+
+            <label for="phone" class="label">Phone <span class="optional"></span></label>
+            <input type="tel" id="phone" name="phone" required placeholder="Enter your phone number">
+
+            <label for="questions" class="label">Your Message</label>
+            <textarea id="questions" name="questions" rows="3" required placeholder="Type here..."></textarea>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+
+</html>
